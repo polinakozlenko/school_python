@@ -1,0 +1,27 @@
+import math
+
+a, b, c = map(int, input().split(sep=' '))
+
+def solve_equation(a: float, b: float, c: float) -> str:
+  if a != 0:
+    D = b ** 2 - 4 * a * c
+    if D < 0:
+      res = 'no roots'
+    elif D == 0:
+      res = 'one repeated root, x1 = ' + str(-b / (2*a))
+    else:
+      res = 'two roots, x1 = ' +\
+      str(-b - math.sqrt(D) / (2 * a)) + 'and x2 = ' +\
+      str(-b + math.sqrt(D) / (2 * a))
+  else:
+    if b != 0:
+      res = 'one root, x1 = ' + str(-c / b)
+    else:
+      if c != 0:
+        res = 'no roots'
+      else:
+        res = 'identity: 0 = 0'
+  return res
+
+result = solve_equation(a, b, c)
+print(result)
